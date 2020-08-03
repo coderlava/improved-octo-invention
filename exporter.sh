@@ -32,6 +32,8 @@ wget https://github.com/grafana/loki/releases/download/v1.5.0/loki-linux-amd64.z
 echo -e "[+]unzipping promtail and loki"
 unzip promtail-linux-amd64.zip
 unzip loki-linux-amd64.zip
+rm loki-linux-amd64.zip
+rm promtail-linux-amd64.zip
 
 mv promtail-linux-amd64 promtail
 mv loki-linux-amd64 loki
