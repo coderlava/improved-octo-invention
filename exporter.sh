@@ -17,12 +17,13 @@ curl -s https://raw.githubusercontent.com/coderlava/improved-octo-invention/mast
 echo -e "[+]prometheus confuguration renew and now starting"
 systemctl start prometheus
 
-
+echo -e "[+]node exporter setup"
 wget https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz
 tar xzvf node_exporter-1.0.1.linux-amd64.tar.gz
 rm node_exporter-1.0.1.linux-amd64.tar.gz
 mv node_exporter-1.0.1.linux-amd64 node_exporter
 ln -s /root/node_exporter/node_exporter /usr/local/bin/node_exporter
+curl -s 
 
 wget https://github.com/grafana/loki/releases/download/v1.5.0/promtail-linux-amd64.zip
 wget https://github.com/grafana/loki/releases/download/v1.5.0/loki-linux-amd64.zip
@@ -34,5 +35,9 @@ mkdir promtail_exporter
 mkdir loki_exporter
 mv promtail promtail_exporter/
 mv loki loki_exporter/
+
 ln -s /root/promtail_exporter/promtail /usr/local/bin/promtail
 ln -s /root/loki_exporter/loki /usr/local/bin/loki
+
+curl -s https://raw.githubusercontent.com/coderlava/improved-octo-invention/master/promtail.yml > /root/promtail_exporter/config.yaml
+curl -s https://raw.githubusercontent.com/coderlava/improved-octo-invention/master/loki.yml > /root/loki_exporter/config.yaml

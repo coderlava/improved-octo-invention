@@ -1,0 +1,10 @@
+[Unit]
+Description=Promtail Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/promtail -config.file=/root/promtail_exporter/config.yaml
+
+[Install]
+WantedBy=multi-user.target
